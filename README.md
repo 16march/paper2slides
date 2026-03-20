@@ -1,62 +1,93 @@
-# My Master Project
+# Paper2Slides
 
-This directory is the working root for the master's thesis project on academic paper to slide generation.
+> A modular multimodal pipeline for converting academic papers into structured, presentation-ready slides.
 
-## Project Focus
-The project studies how to convert academic PDFs into structured LaTeX Beamer slides.
+---
 
-Current understanding:
-- this is not only a summarization problem,
-- this is a multimodal document understanding problem,
-- high-quality slide generation depends on layout parsing, OCR, reading order recovery, structural representation, and generation.
+## Overview
 
-## Research Evolution
-The project idea has evolved through several stages:
+Paper2Slides addresses the problem of transforming academic PDFs into coherent slide presentations.
 
-1. Initial proposal:
-   LLM-based automatic generation of academic slides from structured documents.
+Unlike traditional approaches that treat this task as text summarization, this project models it as a **multimodal document understanding and structured transformation problem**.
 
-2. Revised pre-semester proposal:
-   Reframed as multimodal machine translation from paper language to presentation language.
+Scientific papers contain complex layouts, figures, tables, and hierarchical structures that must be preserved and reorganized to produce high-quality presentations.
 
-3. Fall 2025 progress reports:
-   Practical work showed that document parsing and structure recovery are core bottlenecks.
-   Detection is strong enough to stop being the default top priority.
+This repository provides a modular, end-to-end pipeline that explicitly represents each transformation stage, enabling systematic analysis, debugging, and improvement.
 
-## Directory Guide
-- `proposals/`: early-stage research proposals and supervisor-approved research descriptions
-- `reports/`: dated progress reports prepared for professor meetings
-- `references/`: key reference materials such as prior thesis and templates
-- `archives/`: older codebases or copied project assets kept for reference
+## Key Idea
 
-## Important Files
-- `AGENTS.md`: project operating instructions and persistent context for Codex
-- `PROJECT_LOG.md`: dated project history and high-level decisions
-- `TASKS.md`: active task tracking
+Generating slides from research papers is fundamentally different from summarization.
 
-## Minimal Pipeline
-A runnable placeholder system now exists under `src/pdf2slides/`.
+A useful presentation must preserve and reorganize:
+- document structure,
+- reading order,
+- figure and table context,
+- formula-related content,
+- logical progression across sections.
 
-It currently supports:
-- PDF to raw text extraction via `pdftotext`
-- placeholder layout block detection
-- placeholder OCR stage
-- structured document JSON generation
-- structured slide deck JSON generation
-- minimal Beamer `.tex` rendering
+Paper2Slides therefore treats the task as:
 
-Run it with:
+**academic PDF -> structured document representation -> slide plan -> presentation output**
 
-```bash
-PYTHONPATH=src python3 -m pdf2slides proposals/2025-04-20-initial-research-proposal.pdf --output-root outputs
+This design makes the system more interpretable, modular, and extensible than a black-box end-to-end generator.
+
+## Pipeline
+
+`PDF -> text/layout extraction -> block detection -> OCR/transcription -> structure parsing -> structured document JSON -> slide planning -> LaTeX Beamer output`
+
+The current implementation already follows this architecture end-to-end, with placeholder components used where research modules are still under development.
+
+## Project Structure
+
+```text
+.
+├── src/pdf2slides/        # Core pipeline code
+├── docs/                  # Architecture notes
+├── reports/               # Progress reports and research artifacts
+├── archives/              # Archived legacy code and reusable components
+├── AGENTS.md              # Persistent project context and working rules
+├── PROJECT_LOG.md         # High-level project history
+├── TASKS.md               # Active development priorities
+└── README.md
 ```
 
-Architecture note:
-- `docs/architecture.md`
+## Usage
 
-## Immediate Next Use
-This folder should become the single organized workspace for:
-- collecting previous materials,
-- defining thesis scope,
-- designing the system architecture,
-- building the first end-to-end prototype.
+Run the minimal end-to-end pipeline on a PDF:
+
+```bash
+PYTHONPATH=src python3 -m pdf2slides path/to/input.pdf --output-root outputs
+```
+
+Example outputs:
+
+```text
+outputs/<pdf-stem>/
+  01_raw_text.txt
+  02_pages.json
+  03_blocks.json
+  04_structured_document.json
+  05_slide_deck.json
+  06_slides.tex
+  RUN_SUMMARY.md
+```
+
+## Current Status
+
+This repository currently provides:
+- a runnable end-to-end prototype,
+- explicit intermediate representations for each stage,
+- a modular architecture designed for future replacement with stronger models.
+
+The present emphasis is **system architecture and research scaffolding**, not benchmark accuracy. Layout detection, OCR, structure parsing, and slide generation are currently implemented with lightweight placeholder logic to validate interfaces and data flow.
+
+## Future Work / Research Direction
+
+Planned next steps include:
+- replacing placeholder layout analysis with document parsing models,
+- improving OCR and reading-order recovery for scientific PDFs,
+- designing stronger intermediate representations for figures, tables, and formulas,
+- developing better slide planning and layout generation modules,
+- evaluating the system on paper-slide pairs from academic domains.
+
+The long-term goal is a robust system for converting complex academic papers into coherent, presentation-quality slides while preserving both content fidelity and structural logic.

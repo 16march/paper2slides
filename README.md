@@ -42,9 +42,6 @@ The current implementation already follows this architecture end-to-end, with pl
 ```text
 .
 ├── src/pdf2slides/        # Core pipeline code
-├── docs/                  # Architecture notes
-├── reports/               # Progress reports and research artifacts
-├── archives/              # Archived legacy code and reusable components
 └── README.md
 ```
 

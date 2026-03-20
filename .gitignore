@@ -37,6 +37,11 @@ AGENTS.md
 PROJECT_LOG.md
 TASKS.md
 
+# Private-only project materials
+docs/
+reports/
+archives/
+
 # Archived legacy project internals
 archives/page-object-detection/.git/
 archives/page-object-detection/__pycache__/

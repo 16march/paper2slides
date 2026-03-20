@@ -1,7 +1,0 @@
-tabulate
-faker
-numpy
-matplotlib==2.2.2
-opencv-python
-pytesseract
-pdf2image

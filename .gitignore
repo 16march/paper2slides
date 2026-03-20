@@ -1,0 +1,47 @@
+__pycache__/
+*.pyc
+outputs/
+.DS_Store
+
+# Python caches
+.pytest_cache/
+.mypy_cache/
+
+# Local environments
+.venv/
+venv/
+
+# Generated LaTeX artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# Large or derived research artifacts
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.db
+*.zip
+*.pdf
+*.docx
+*.xlsx
+*.jpg
+*.png
+
+# Archived legacy project internals
+archives/page-object-detection/.git/
+archives/page-object-detection/__pycache__/
+archives/page-object-detection/csv_dir/
+archives/page-object-detection/img_dir/
+archives/page-object-detection/img_out_dir/
+archives/page-object-detection/latex_dir/
+archives/page-object-detection/my_yolo_dataset/
+archives/page-object-detection/pdf_dir/
+archives/page-object-detection/runs/
+archives/page-object-detection/test_output/
+archives/page-object-detection/yolo_dir/
+archives/page-object-detection/yolo_out_dir/

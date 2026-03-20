@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Progress Report: Reproduction and Improvement of Document Layout Analysis (Sulaeman, 2019)}}
+\author{Tongyan CONG}
+\date{November 21, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+In the past two weeks, I focused on reproducing the baseline work from the laboratory's previous thesis (Sulaeman, 2019). I successfully reconstructed the dataset generation pipeline and implemented a modern object detection framework (YOLOv8) to replace the legacy YOLOv3 system.
+
+\noindent \textbf{Key Achievement:} I achieved a mAP@50 of \textbf{95.5\%} on the synthetic dataset, significantly outperforming the previous baseline of 82.2\%.
+
+\section{Methodology \& Implementation}
+\subsection{Dataset Generation}
+I utilized the original scripts from Sulaeman (2019) to generate a synthetic dataset imitating the ACL 2019 format.
+\begin{itemize}
+    \item \textbf{Training Set:} $\sim$850 images
+    \item \textbf{Validation Set:} $\sim$210 images
+\end{itemize}
+
+\subsection{Model Architecture}
+Upgraded from Darknet-53 (YOLOv3) to \textbf{YOLOv8n (Nano)}. This change eliminated the need for complex morphological preprocessing (erosion/dilation) used in the 2019 study, allowing for a streamlined end-to-end workflow.
+
+\subsection{Environment}
+My Macbook Air M3 is used for training.
+
+\section{Results}
+The table below presents the complete performance metrics for each object class using YOLOv8n on the generated validation set (211 images).
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Class} & \textbf{Instances} & \textbf{Precision (P)} & \textbf{Recall (R)} & \textbf{mAP@50} & \textbf{mAP@50-95} \\
+        \midrule
+        All & 1841 & 0.950 & 0.906 & 0.955 & 0.782 \\
+        Title & 48 & 0.837 & 1.000 & 0.995 & 0.753 \\
+        Author & 72 & 0.968 & 1.000 & 0.995 & 0.916 \\
+        Section & 249 & 0.911 & 0.910 & 0.969 & 0.673 \\
+        Paragraph & 1221 & 0.998 & 1.000 & 0.995 & 0.989 \\
+        Table & 68 & 0.990 & 1.000 & 0.995 & 0.914 \\
+        Figure & 60 & 0.988 & 1.000 & 0.995 & 0.995 \\
+        Formula & 60 & 0.908 & 0.495 & 0.805 & 0.470 \\
+        Footnote & 63 & 1.000 & 0.841 & 0.889 & 0.548 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Detailed Performance Metrics by Class}
+\end{table}
+
+\section{Findings \& Analysis}
+\subsection{Perfect Recall for Structural Elements}
+Classes such as Paragraph, Table, Figure, Title, and Author achieved a Recall of \textbf{1.0 (100\%)}. This indicates the model successfully detected every single instance of these objects in the validation set without exception. The mAP@50 for these classes is effectively saturated ($\sim$99.5\%).
+
+\subsection{The Critical Bottleneck: Formula Detection}
+\begin{itemize}
+    \item \textbf{High Precision (0.908):} When the model predicts a formula, it is correct 90.8\% of the time.
+    \item \textbf{Low Recall (0.495):} Crucially, the model misses 50.5\% of all formulas. This is the lowest recall among all classes.
+\end{itemize}
+
+\noindent \textbf{Insight:} The disparity between high precision and low recall suggests that while the visual features of distinct, display-style formulas are learned, the model fails to localize small, inline formulas that blend into the text. This visual limitation confirms the necessity of introducing semantic/textual understanding (Multimodal LLM) in the next phase of research.
+
+
+\section{Attachments}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{confusion_matrix.png}
+    \caption{Normalized Confusion Matrix. Note the diagonal dominance for most classes, but 'formula' shows some confusion with background or text, explaining the lower recall.}
+    \label{fig:confusion}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{val_batch0_pred.jpg}
+    \caption{Visualization of validation results. The model correctly identifies columns, paragraphs, and headers with high precision.}
+    \label{fig:val_vis}
+\end{figure}
+
+
+
+\end{document}

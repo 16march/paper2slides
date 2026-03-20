@@ -45,9 +45,6 @@ The current implementation already follows this architecture end-to-end, with pl
 ├── docs/                  # Architecture notes
 ├── reports/               # Progress reports and research artifacts
 ├── archives/              # Archived legacy code and reusable components
-├── AGENTS.md              # Persistent project context and working rules
-├── PROJECT_LOG.md         # High-level project history
-├── TASKS.md               # Active development priorities
 └── README.md
 ```
 

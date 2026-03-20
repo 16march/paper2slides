@@ -32,6 +32,11 @@ venv/
 *.jpg
 *.png
 
+# Local project management notes
+AGENTS.md
+PROJECT_LOG.md
+TASKS.md
+
 # Archived legacy project internals
 archives/page-object-detection/.git/
 archives/page-object-detection/__pycache__/

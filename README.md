@@ -115,29 +115,72 @@ outputs/<pdf-stem>/
 
 ## Demo
 
-The repository already includes a minimal reproducible example run based on the initial research proposal PDF.
+Paper2Slides is presented in two complementary ways:
+- the quick view shows what the system does at a glance,
+- the full artifact view exposes the intermediate representations that make the pipeline inspectable and debuggable.
 
-Example input:
+### Demo (Quick View)
+
+**Input PDF**
+
+![Input PDF](docs/demo_input.png)
+
+**Output Slides**
+
+![Output Slides](docs/demo_output.png)
+
+**Intermediate JSON**
+
+A key design choice of this project is to expose structured intermediate representations instead of hiding the transformation inside a single black-box model.
+
+```json
+{
+  "title": "Initial Research Proposal",
+  "sections": [
+    {
+      "heading": "Introduction",
+      "page_number": 1,
+      "content_blocks": [
+        {
+          "block_id": "p1_b2",
+          "block_type": "paragraph",
+          "text": "Paper2Slides models academic PDF to slides as a structured document transformation problem."
+        }
+      ]
+    }
+  ],
+  "abstract": "A modular pipeline that converts academic PDFs into structured slide drafts."
+}
+```
+
+### Demo (Full Pipeline Artifacts)
+
+The repository also includes a checked-in example snapshot so the full pipeline can be inspected without running the code.
+
+**Example input**
 - source PDF: `proposals/2025-04-20-initial-research-proposal.pdf`
 
-Checked-in example snapshot:
+**Checked-in example snapshot**
 - overview: `examples/2025-04-20-initial-research-proposal/README.md`
+
+**Stage 1: Raw extraction**
 - raw text: `examples/2025-04-20-initial-research-proposal/01_raw_text.txt`
-- page representation: `examples/2025-04-20-initial-research-proposal/02_pages.json`
+
+**Stage 2: Page-level representation**
+- pages: `examples/2025-04-20-initial-research-proposal/02_pages.json`
+
+**Stage 3: Block-level representation**
 - detected blocks: `examples/2025-04-20-initial-research-proposal/03_blocks.json`
-- structured document IR: `examples/2025-04-20-initial-research-proposal/04_structured_document.json`
+
+**Stage 4: Structured document IR**
+- structured document: `examples/2025-04-20-initial-research-proposal/04_structured_document.json`
+
+**Stage 5: Slide planning**
 - slide deck plan: `examples/2025-04-20-initial-research-proposal/05_slide_deck.json`
-- rendered Beamer output: `examples/2025-04-20-initial-research-proposal/06_slides.tex`
+
+**Stage 6: Rendered output**
+- Beamer source: `examples/2025-04-20-initial-research-proposal/06_slides.tex`
 - run summary: `examples/2025-04-20-initial-research-proposal/RUN_SUMMARY.md`
-
-Suggested README demo assets to keep alongside this section:
-- one screenshot of the source PDF page,
-- one screenshot of the rendered slide output,
-- one screenshot of an intermediate JSON artifact such as `04_structured_document.json`.
-
-At the moment, the demo is artifact-first rather than image-first: the repository contains the actual intermediate files and final `.tex` output, but not yet polished screenshots of the pipeline stages.
-
-The corresponding generated run can still be reproduced locally under `outputs/`, but `examples/` is the stable location for browsing a representative result directly in the repository.
 
 ## Why This Is Hard
 

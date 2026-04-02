@@ -1,0 +1,46 @@
+{
+  "source_pdf": "/Users/cty/WASEDA/NLP Lab/My Master Project/proposals/2025-04-20-initial-research-proposal.pdf",
+  "output_dir": "/Users/cty/WASEDA/NLP Lab/My Master Project/outputs/2025-04-20-initial-research-proposal",
+  "slides": [
+    {
+      "slide_id": "slide_01",
+      "title": "AutoSlide: Automatic Slide Generation with Latex for presentation with LLMs",
+      "bullets": [
+        "Minimal placeholder pipeline output",
+        "Source pages: 2",
+        "Detected sections: 1"
+      ],
+      "source_sections": [
+        "document"
+      ],
+      "layout_hint": "title-slide"
+    },
+    {
+      "slide_id": "slide_02",
+      "title": "Abstract",
+      "bullets": [
+        "Form2 研究計画書 Research plan 氏名/Name Cong Tongyan 研究課題 Theme research of your 日付 /Date 2025/04/20 AutoSlide: Automatic Slide Generation with Latex for presentation",
+        "novelty or importance).",
+        "In (3), if your research plan is related to the information in Form 4, explain the difference, if not, explain how to catch up the lack of experience."
+      ],
+      "source_sections": [
+        "abstract"
+      ],
+      "layout_hint": "summary"
+    },
+    {
+      "slide_id": "slide_03",
+      "title": "Introduction",
+      "bullets": [
+        "Form2 研究計画書 Research plan 氏名/Name Cong Tongyan 研究課題 Theme research of your 日付 /Date 2025/04/20 AutoSlide: Automatic Slide Generation with Latex for presentation",
+        "novelty or importance).",
+        "In (3), if your research plan is related to the information in Form 4, explain the difference, if not, explain how to catch up the lack of experience.",
+        "If you are referring to journal papers, state the source."
+      ],
+      "source_sections": [
+        "Introduction"
+      ],
+      "layout_hint": "bullet-summary"
+    }
+  ]
+}

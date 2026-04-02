@@ -1,0 +1,82 @@
+様式２
+
+Form2
+
+研究計画書
+Research plan
+
+氏名/Name Cong Tongyan
+研究課題
+Theme
+research
+
+of
+
+your
+
+日付 /Date
+
+2025/04/20
+
+AutoSlide: Automatic Slide Generation with Latex for presentation with LLMs
+
+IPS で行う研究について、(1)背景、(2)目的と目標とその理由、(3)様式 4 記載内容との関連、(4)方法、(5)期待
+される効果（新規性あるいは有効性など）を論理的、具体的に記述してください。なお(3)では、研究計画が様式
+4 記載内容と関連がある場合はその違いを、ない場合は経験不足を補う方法を記述してください。また、資料を
+参照する場合は、その出典を明記してください。剽窃は認められません。（本用紙枠内 1000 字以内厳守。但し、
+出典の記述は文字数としてカウントしない。別紙記入不可。印字可）
+Describe your research plan in IPS logically and concretely (1) background, (2) purpose, goals, and their
+justification, (3) relationship with the description in Form 4, (4) methods, and (5) expected results (e.g. novelty or
+importance). In (3), if your research plan is related to the information in Form 4, explain the difference, if not,
+explain how to catch up the lack of experience. If you are referring to journal papers, state the source. In any case,
+plagiarism is not permitted. (Please limit your essay to 500 words on this form. References are not included in the
+count. Do not attach any separate sheet. Printing is acceptable.)
+(1) Background
+
+Presentations play a crucial role in academic communication, allowing researchers to effectively convey ideas,
+findings, and insights to diverse audiences. Among various forms, slide-based presentations are especially
+common due to their clarity, portability, and adaptability in both formal conferences and classroom settings.
+However, preparing slides—especially for technical content—can be labor-intensive and time-consuming. While
+tools like PowerPoint offer design flexibility, they often lack support for logical structuring and formatting.
+With the emergence of Large Language Models (LLMs), there is growing potential for automating various parts of
+academic workflows. LLMs have demonstrated strong capabilities in summarization, content organization, and
+knowledge extraction. This opens up opportunities to develop systems that generate presentation materials from
+academic documents such as research papers, reports, or theses. Particularly, these models can be adapted to
+produce slides in textual formats using tools such as LaTeX Beamer, commonly used in scientific fields.
+(2) Purpose, Goals, and Justification
+This research aims to design an automated system that transforms structured academic documents into
+presentation slides using fine-tuned LLMs. The objectives are:
+•To streamline the creation of logically structured, academically formatted slides;
+•To support audience-specific customization (e.g., technical vs. general);
+•To provide speaker notes that assist in oral delivery;
+
+•To enhance the efficiency and consistency of academic communication.
+
+This approach addresses a gap in existing document-to-slide (D2S) tools, which rarely consider both content
+precision and academic presentation norms.
+(3) Methods
+• Data Collection: Gather high-quality slides from leading academic conferences and open course materials.
+Reconstruct them in a standardized, structured format (e.g., LaTeX Beamer) to create a parallel dataset aligned
+with original source documents.
+•Model Fine-tuning: Fine-tune a pre-trained LLM to identify and extract key elements (e.g., section titles, bullet
+points, formulas, figures) from documents and convert them into slide-format text. Use parameter-efficient
+tuning methods to reduce resource demands.
+• Audience Adaptation: Train the system to generate different versions of slides based on audience type and
+presentation length.
+
+•Evaluation: Assess the system output using automatic metrics (e.g., ROUGE) and human evaluations (e.g., clarity,
+coherence, academic tone).
+(4) Expected Results
+The outcome will be a novel tool that automates high-quality academic slide generation. Its contribution lies in
+combining LLM-based summarization with structured presentation generation in a way that accommodates
+academic standards and varying audience needs. Compared to existing solutions, the system is expected to
+produce more coherent, readable, and purpose-adapted presentations—benefiting students, researchers, and
+educators alike.
+※枠外に記入しないでください。Please do not write in the margin.
+words）
+
+（ 492
+
+字: 492
+
+

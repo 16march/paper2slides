@@ -1,8 +1,8 @@
 # Example Snapshot
 
-This directory is a checked-in snapshot of a real pipeline run for:
+This directory is a checked-in snapshot of a real pipeline run.
 
-- source PDF: `proposals/2025-04-20-initial-research-proposal.pdf`
+The original source PDF is not distributed in the public repository, but the generated artifacts are kept here so the current pipeline contract can be inspected without rerunning the system.
 
 Included artifacts:
 - `01_raw_text.txt`

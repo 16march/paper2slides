@@ -44,6 +44,7 @@ The current implementation already follows this architecture end-to-end, with pl
 ├── examples/              # Checked-in example pipeline outputs
 ├── src/pdf2slides/        # Core pipeline code
 ├── tests/                 # Minimal smoke tests
+├── pyproject.toml         # Minimal Python packaging metadata
 └── README.md
 ```
 
@@ -75,29 +76,28 @@ sudo apt-get install poppler-utils
 
 The current minimal pipeline calls `pdftotext` directly. If it is missing, the extraction stage will fail with a runtime error.
 
-Sample PDF for reproduction:
-- `proposals/2025-04-20-initial-research-proposal.pdf`
+The checked-in example artifacts can be inspected without running the code. The original source PDF for that snapshot is not distributed in the public repository; use any local academic PDF to reproduce a fresh run.
 
 ## Usage
 
 Run the minimal end-to-end pipeline on a PDF:
 
 ```bash
-PYTHONPATH=src python3 -m pdf2slides path/to/input.pdf --output-root outputs
+python3 -m pdf2slides path/to/input.pdf --output-root outputs
 ```
 
-For example, to reproduce the sample run included in this repository:
+For example:
 
 ```bash
-PYTHONPATH=src python3 -m pdf2slides \
-  proposals/2025-04-20-initial-research-proposal.pdf \
+python3 -m pdf2slides \
+  path/to/local-paper.pdf \
   --output-root outputs
 ```
 
 Run the minimal smoke test suite:
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests
+python3 -m unittest discover -s tests
 ```
 
 Example outputs:
@@ -115,23 +115,9 @@ outputs/<pdf-stem>/
 
 ## Demo
 
-Paper2Slides is presented in two complementary ways:
-- the quick view shows what the system does at a glance,
-- the full artifact view exposes the intermediate representations that make the pipeline inspectable and debuggable.
+Paper2Slides exposes structured intermediate representations instead of hiding the transformation inside a single black-box model.
 
-### Demo (Quick View)
-
-**Input PDF**
-
-![Input PDF](docs/demo_input.png)
-
-**Output Slides**
-
-![Output Slides](docs/demo_output.png)
-
-**Intermediate JSON**
-
-A key design choice of this project is to expose structured intermediate representations instead of hiding the transformation inside a single black-box model.
+Minimal structured-document artifact shape:
 
 ```json
 {
@@ -153,12 +139,10 @@ A key design choice of this project is to expose structured intermediate represe
 }
 ```
 
-### Demo (Full Pipeline Artifacts)
-
-The repository also includes a checked-in example snapshot so the full pipeline can be inspected without running the code.
+The repository includes a checked-in example snapshot so the full pipeline can be inspected without running the code.
 
 **Example input**
-- source PDF: `proposals/2025-04-20-initial-research-proposal.pdf`
+- source PDF: omitted from the public repository
 
 **Checked-in example snapshot**
 - overview: `examples/2025-04-20-initial-research-proposal/README.md`

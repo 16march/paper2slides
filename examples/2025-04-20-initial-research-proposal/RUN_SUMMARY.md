@@ -1,6 +1,6 @@
 # Run Summary
 
-- Source PDF: `/Users/cty/WASEDA/NLP Lab/My Master Project/proposals/2025-04-20-initial-research-proposal.pdf`
+- Source PDF: `source PDF omitted from public repository`
 - Pages parsed: `2`
 - Sections inferred: `1`
 - Slides generated: `3`

@@ -189,7 +189,6 @@ This repository currently provides:
 - a modular architecture designed for future replacement with stronger models.
 
 The present emphasis is **system architecture and research scaffolding**, not benchmark accuracy. Layout detection, OCR, structure parsing, and slide generation are currently implemented with lightweight placeholder logic to validate interfaces and data flow.
-
 ## Current Limitations
 
 The current repository is intentionally a research scaffold, not a solved document understanding system.
